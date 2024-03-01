@@ -47,5 +47,15 @@ impl Transform {
     /// Return a copy of an input ray transformed by self.
     pub fn transform_ray(self, ray: Ray) -> Ray {
         // TODO: Implement Transform.
+        match self {
+            Transform::Scale(_) | Transform::Rotate(_, _) => Ray {
+                origin: self.transform(ray.origin),
+                direction: self.transform(ray.direction)
+            },
+            Transform::Translate(_) => Ray {
+                origin: self.transform(ray.origin),
+                direction: ray.direction
+            }
+        }
     }
 }
