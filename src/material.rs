@@ -27,5 +27,16 @@ impl Material {
         bounces: usize,
     ) -> Vector3 {
         // TODO: Implement materials.
+
+        let dir = loop {
+            let dir = Vector3::unit(
+        random::normal(),
+        random::normal(),
+        random::normal()
+            )
+        }
+
+        
+
     }
 }
