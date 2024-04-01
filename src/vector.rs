@@ -94,14 +94,12 @@ impl Vector3 {
 
     /// Component-wise multiplication of this vector and `other`.
     pub fn cwise_mul(self, other: Vector3) -> Vector3 {
-        Vector3 { x: self.x * other.x,
-                     y: self.y * other.y, 
-                     z: (self.z * other.y) }
+        self.cwise(other, |a, b| a * b)
     }
 
     /// Component-wise division of this vector and `other`.
     pub fn cwise_div(self, other: Vector3) -> Vector3 {
-        Vector3 { x: (self.x / other.x), y: (self.y / other.y), z: (self.z / other.y) }
+        self.cwise(other, |a, b| a / b)
     }
 
     /// Return the `x` component of this vector.
