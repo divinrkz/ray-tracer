@@ -37,6 +37,7 @@ impl Vector3 {
     /// Create a new `Vector3` of zeros.
     pub fn zeros() -> Self {
         // TODO
+        Vector3 { x: 0f32, y: 0f32, z: 0f32 }
     }
 
     /// Create a new `Vector3` of ones.
