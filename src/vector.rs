@@ -42,7 +42,7 @@ impl Vector3 {
 
     /// Create a new `Vector3` of ones.
     pub fn ones() -> Self {
-        // TODO
+        Vector3 { x: 1f32, y: 1f32, z: 1f32 }
     }
 
     /// Create a new unit `Vector3` in the direction of the vector with `x`, `y`, `z`.
