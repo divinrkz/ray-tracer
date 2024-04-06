@@ -1,4 +1,5 @@
 use std::fmt;
+use std::intrinsics::sqrtf32;
 use std::ops::{Add, Mul, Neg, Sub};
 
 use serde::{Deserialize, Serialize};
@@ -48,6 +49,9 @@ impl Vector3 {
     /// Create a new unit `Vector3` in the direction of the vector with `x`, `y`, `z`.
     pub fn unit(x: f32, y: f32, z: f32) -> Self {
         // TODO
+        let magnitude = (x.powi(2) + y.powi(2) + z.powi(2)).sqrt();
+           Vector3{x: x/magnitude, y: y/magnitude, z: z/magnitude}
+
     }
 
     /// Compute the square of the Euclidean norm of this vector.
