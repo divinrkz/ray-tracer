@@ -37,7 +37,6 @@ impl Vector3 {
 
     /// Create a new `Vector3` of zeros.
     pub fn zeros() -> Self {
-        // TODO
         Vector3 { x: 0f32, y: 0f32, z: 0f32 }
     }
 
@@ -48,9 +47,8 @@ impl Vector3 {
 
     /// Create a new unit `Vector3` in the direction of the vector with `x`, `y`, `z`.
     pub fn unit(x: f32, y: f32, z: f32) -> Self {
-        // TODO
-        let magnitude = (x.powi(2) + y.powi(2) + z.powi(2)).sqrt();
-           Vector3{x: x/magnitude, y: y/magnitude, z: z/magnitude}
+        let norm = (x.powi(2) + y.powi(2) + z.powi(2)).sqrt();
+        Vector3{x: x/norm, y: y/norm, z: z/norm}
 
     }
 
