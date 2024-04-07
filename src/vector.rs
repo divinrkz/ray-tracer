@@ -54,13 +54,12 @@ impl Vector3 {
 
     /// Compute the square of the Euclidean norm of this vector.
     pub fn squared_norm(self) -> f32 {
-        
         self.x.powi(2) +  self.y.powi(2) +  self.z.powi(2)
     }
 
     /// Compute the Euclidean norm of this vector.
     pub fn norm(self) -> f32 {
-        // TODO
+        self.squared_norm().sqrt()
     }
 
     /// Return a normalized copy of this vector.
