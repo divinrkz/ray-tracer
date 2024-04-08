@@ -64,7 +64,8 @@ impl Vector3 {
 
     /// Return a normalized copy of this vector.
     pub fn normalized(self) -> Vector3 {
-        // TODO
+        let norm = self.norm();
+        Vector3 { x: self.x / norm, y: self.y / norm, z: self.z / norm }
     }
 
     /// Compute the dot product of this vector and `other`.
