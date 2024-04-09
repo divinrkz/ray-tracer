@@ -70,18 +70,22 @@ impl Vector3 {
 
     /// Compute the dot product of this vector and `other`.
     pub fn dot(self, other: Vector3) -> f32 {
-        // TODO
+        (self.x * other.x) + (self.y * other.y) + (self.z * other.z)
     }
 
     /// Compute the cross product of this vector and `other`.
     pub fn cross(self, other: Vector3) -> Vector3 {
-        // TODO
+        Vector3 {
+            x: self.y * other.z - self.z * other.y,
+            y: self.z * other.x - self.x * other.z,
+            z: self.x * other.y - self.y * other.x,
+        }
     }
 
     /// Apply a component-wise reduction operation `f` to the paired `x`, `y`, and `z`, returning
     /// the result as a new vector.
     pub fn cwise(self, other: Vector3, f: fn(f32, f32) -> f32) -> Vector3 {
-        // TODO
+        Vector3 { x: f(self.x, other.x), y: f(self.y, other.y), z: f(self.z, other.z) }
     }
 
     /// Component-wise multiplication of this vector and `other`.
