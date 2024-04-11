@@ -85,17 +85,23 @@ impl Vector3 {
     /// Apply a component-wise reduction operation `f` to the paired `x`, `y`, and `z`, returning
     /// the result as a new vector.
     pub fn cwise(self, other: Vector3, f: fn(f32, f32) -> f32) -> Vector3 {
-        Vector3 { x: f(self.x, other.x), y: f(self.y, other.y), z: f(self.z, other.z) }
+        Vector3 { 
+            x: f(self.x, other.x),
+            y: f(self.y, other.y), 
+            z: f(self.z, other.z) 
+        }
     }
 
     /// Component-wise multiplication of this vector and `other`.
     pub fn cwise_mul(self, other: Vector3) -> Vector3 {
-        Vector3 { x: (self.x * other.x), y: (self.y * other.y), z: (self.z * other.y) }
+        Vector3 { x: self.x * other.x,
+                     y: self.y * other.y, 
+                     z: (self.z * other.y) }
     }
 
     /// Component-wise division of this vector and `other`.
     pub fn cwise_div(self, other: Vector3) -> Vector3 {
-        // TODO
+        Vector3 { x: (self.x / other.x), y: (self.y / other.y), z: (self.z / other.y) }
     }
 
     /// Return the `x` component of this vector.
