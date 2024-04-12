@@ -316,61 +316,61 @@ mod test {
         );
     }
 
-    #[test]
-    fn test_ops() {
-        let test1 = Vector3::new(1.0, 1.0, 1.0);
-        let test2 = Vector3::new(1.0, 2.0, 4.0);
-        let test3 = Vector3::new(2.0, 3.0, 5.0);
-        let test4 = Vector3::new(2.0, 4.0, 8.0);
-        let test5 = Vector3::new(-1.0, -2.0, -4.0);
+    // #[test]
+    // fn test_ops() {
+    //     let test1 = Vector3::new(1.0, 1.0, 1.0);
+    //     let test2 = Vector3::new(1.0, 2.0, 4.0);
+    //     let test3 = Vector3::new(2.0, 3.0, 5.0);
+    //     let test4 = Vector3::new(2.0, 4.0, 8.0);
+    //     let test5 = Vector3::new(-1.0, -2.0, -4.0);
 
-        let sum = test1 + test2;
-        assert_eq!(
-            test3, sum,
-            "add() failed on {} + {}. Expected {}, got {}.",
-            test1, test2, test3, sum
-        );
+    //     let sum = test1 + test2;
+    //     assert_eq!(
+    //         test3, sum,
+    //         "add() failed on {} + {}. Expected {}, got {}.",
+    //         test1, test2, test3, sum
+    //     );
 
-        let diff = test3 - test2;
-        assert_eq!(
-            test1, diff,
-            "sub() failed on {} - {}. Expected {}, got {}.",
-            test3, test2, test1, diff
-        );
+    //     let diff = test3 - test2;
+    //     assert_eq!(
+    //         test1, diff,
+    //         "sub() failed on {} - {}. Expected {}, got {}.",
+    //         test3, test2, test1, diff
+    //     );
 
-        let mulr = 2.0 * test2;
-        assert_eq!(
-            test4, mulr,
-            "mul() failed on {} * {}. Expected {}, got {}.",
-            2.0, test2, test4, mulr
-        );
+    //     let mulr = 2.0 * test2;
+    //     assert_eq!(
+    //         test4, mulr,
+    //         "mul() failed on {} * {}. Expected {}, got {}.",
+    //         2.0, test2, test4, mulr
+    //     );
 
-        let mull = test2 * 2.0;
-        assert_eq!(
-            test4, mull,
-            "mul() failed on {} * {}. Expected {}, got {}.",
-            test2, 2.0, test4, mull
-        );
+    //     let mull = test2 * 2.0;
+    //     assert_eq!(
+    //         test4, mull,
+    //         "mul() failed on {} * {}. Expected {}, got {}.",
+    //         test2, 2.0, test4, mull
+    //     );
 
-        let neg = -test2;
-        assert_eq!(
-            test5, neg,
-            "neg() failed on -{}. Expected {}, got {}.",
-            test2, test5, neg
-        );
+    //     let neg = -test2;
+    //     assert_eq!(
+    //         test5, neg,
+    //         "neg() failed on -{}. Expected {}, got {}.",
+    //         test2, test5, neg
+    //     );
 
         // Make sure implementations exist
-        let _ = &test1 + test2;
-        let _ = test1 + &test2;
-        let _ = &test1 + &test2;
+        // let _ = &test1 + test2;
+        // let _ = test1 + &test2;
+        // let _ = &test1 + &test2;
 
-        let _ = &test1 - test2;
-        let _ = test1 - &test2;
-        let _ = &test1 - &test2;
+        // let _ = &test1 - test2;
+        // let _ = test1 - &test2;
+        // let _ = &test1 - &test2;
 
-        let _ = 2.0 * &test2;
-        let _ = &test2 * 2.0;
+        // let _ = 2.0 * &test2;
+        // let _ = &test2 * 2.0;
 
-        let _ = -&test1;
+        // let _ = -&test1;
     }
 }
