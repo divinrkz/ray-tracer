@@ -1,20 +1,19 @@
 use std::fmt;
-use std::intrinsics::sqrtf32;
 use std::ops::{Add, Mul, Neg, Sub};
 
 use serde::{Deserialize, Serialize};
 
-macro_rules! unop_ref_impl {
-    (impl $trait:ident for $self:ty, $method:ident -> $out:ty) => {
-        impl $trait for &$self {
-            type Output = $out;
+// macro_rules! unop_ref_impl {
+//     (impl $trait:ident for $self:ty, $method:ident -> $out:ty) => {
+//         impl $trait for &$self {
+//             type Output = $out;
 
-            fn $method(self) -> $out {
-                $trait::$method(*self)
-            }
-        }
-    };
-}
+//             fn $method(self) -> $out {
+//                 $trait::$method(*self)
+//             }
+//         }
+//     };
+// }
 
 macro_rules! binop_ref_impl {
     (impl $trait:ident<$other:ty> for $self:ty, $method:ident -> $out:ty) => {
@@ -118,35 +117,35 @@ impl Vector3 {
     }
 }
 
-impl Add<Vector3> for Vector3 {
-    // TODO
-}
+// impl Add<Vector3> for Vector3 {
+//     // TODO
+// }
 
-binop_ref_impl! { impl Add<Vector3> for Vector3, add -> Vector3 }
+// binop_ref_impl! { impl Add<Vector3> for Vector3, add -> Vector3 }
 
-impl Sub<Vector3> for Vector3 {
-    // TODO
-}
+// impl Sub<Vector3> for Vector3 {
+//     // TODO
+// }
 
-binop_ref_impl! { impl Sub<Vector3> for Vector3, sub -> Vector3 }
+// binop_ref_impl! { impl Sub<Vector3> for Vector3, sub -> Vector3 }
 
-impl Mul<f32> for Vector3 {
-    // TODO
-}
+// impl Mul<f32> for Vector3 {
+//     // TODO
+// }
 
-binop_ref_impl! { impl Mul<f32> for Vector3, mul -> Vector3 }
+// binop_ref_impl! { impl Mul<f32> for Vector3, mul -> Vector3 }
 
-impl Mul<Vector3> for f32 {
-    // TODO
-}
+// impl Mul<Vector3> for f32 {
+//     // TODO
+// }
 
 binop_ref_impl! { impl Mul<Vector3> for f32, mul -> Vector3 }
 
-impl Neg for Vector3 {
-    // TODO
-}
+// impl Neg for Vector3 {
+//     // TODO
+// }
 
-unop_ref_impl! { impl Neg for Vector3, neg -> Vector3 }
+// unop_ref_impl! { impl Neg for Vector3, neg -> Vector3 }
 
 impl fmt::Display for Vector3 {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
@@ -372,5 +371,5 @@ mod test {
         // let _ = &test2 * 2.0;
 
         // let _ = -&test1;
-    }
+    // }
 }
