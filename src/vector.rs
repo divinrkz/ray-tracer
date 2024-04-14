@@ -3,17 +3,17 @@ use std::ops::{Add, Mul, Neg, Sub};
 
 use serde::{Deserialize, Serialize};
 
-// macro_rules! unop_ref_impl {
-//     (impl $trait:ident for $self:ty, $method:ident -> $out:ty) => {
-//         impl $trait for &$self {
-//             type Output = $out;
+macro_rules! unop_ref_impl {
+    (impl $trait:ident for $self:ty, $method:ident -> $out:ty) => {
+        impl $trait for &$self {
+            type Output = $out;
 
-//             fn $method(self) -> $out {
-//                 $trait::$method(*self)
-//             }
-//         }
-//     };
-// }
+            fn $method(self) -> $out {
+                $trait::$method(*self)
+            }
+        }
+    };
+}
 
 macro_rules! binop_ref_impl {
     (impl $trait:ident<$other:ty> for $self:ty, $method:ident -> $out:ty) => {
@@ -117,11 +117,13 @@ impl Vector3 {
     }
 }
 
-// impl Add<Vector3> for Vector3 {
-//     // TODO
-// }
+impl Add<Vector3> for Vector3  {
+    fn add(self, rhs: Vector3) -> Self::Output {
+        self.cwise(rhs, |a, b| (a + b))
+    }
+}
 
-// binop_ref_impl! { impl Add<Vector3> for Vector3, add -> Vector3 }
+binop_ref_impl! { impl Add<Vector3> for Vector3, add -> Vector3 }
 
 // impl Sub<Vector3> for Vector3 {
 //     // TODO
