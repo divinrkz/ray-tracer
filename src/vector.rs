@@ -178,16 +178,26 @@ impl Mul<f32> for Vector3 {
 binop_ref_impl! { impl Mul<f32> for Vector3, mul -> Vector3 }
 
 impl Mul<Vector3> for f32 {
-    // TODO
+    type Output = f32;
+    fn mul(self, other: Vector3) -> Self::Output {
+        self.cwise_mul(other)
+    }
 }
 
 binop_ref_impl! { impl Mul<Vector3> for f32, mul -> Vector3 }
 
-// impl Neg for Vector3 {
-//     // TODO
-// }
+impl Neg for Vector3 {
+    type Output = Vector3;
+    fn neg(self) -> Self::Output {
+        Vector3 {
+            x: self.x * -1f32,
+            y: self.x * -1f32,
+            z: self.x * -1f32,
+        }
+    }
+}
 
-// unop_ref_impl! { impl Neg for Vector3, neg -> Vector3 }
+unop_ref_impl! { impl Neg for Vector3, neg -> Vector3 }
 
 impl fmt::Display for Vector3 {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
