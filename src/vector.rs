@@ -41,13 +41,13 @@ macro_rules! binop_ref_impl {
         //     }
         // }
 
-        impl $trait<&$other> for &$self {
-            type Output = $out;
+        // impl $trait<&$other> for &$self {
+        //     type Output = $out;
 
-            fn $method(self, other: &$other) -> $out {
-                $trait::$method(*self, *other)
-            }
-        }
+        //     fn $method(self, other: &$other) -> $out {
+        //         $trait::$method(*self, *other)
+        //     }
+        // }
     };
 }
 
