@@ -17,14 +17,6 @@ macro_rules! unop_ref_impl {
 
 macro_rules! binop_ref_impl {
     (impl $trait:ident<$other:ty> for $self:ty, $method:ident -> $out:ty) => {
-        // impl $trait<$other> for $self {
-        //     type Output = $out;
-
-        //     fn $method(self, other: $other) -> $out {
-        //         &self $method &other
-        //     }
-        // }
-
         impl $trait<$other> for &$self {
             type Output = $out;
 
