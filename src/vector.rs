@@ -17,11 +17,19 @@ macro_rules! unop_ref_impl {
 
 macro_rules! binop_ref_impl {
     (impl $trait:ident<$other:ty> for $self:ty, $method:ident -> $out:ty) => {
+        // impl $trait<$other> for $self {
+        //     type Output = $out;
+
+        //     fn $method(self, other: $other) -> $out {
+        //         &self $method &other
+        //     }
+        // }
+
         impl $trait<$other> for &$self {
             type Output = $out;
 
             fn $method(self, other: $other) -> $out {
-                $trait::$method(self, other)
+                (*self).$method(other)
             }
         }
 
@@ -29,15 +37,23 @@ macro_rules! binop_ref_impl {
             type Output = $out;
 
             fn $method(self, other: &$other) -> $out {
-                $trait::$method(self, *other)
+                self.$method(*other)
             }
         }
 
-        // impl $trait<$other> for &$self {
+        impl $trait<&$other> for &$self {
+            type Output = $out;
+
+            fn $method(self, other: &$other) -> $out {
+                (*self).$method(*other)
+            }
+        }
+
+        // impl $trait<&$other> for $self {
         //     type Output = $out;
 
-        //     fn $method(self, other: $other) -> $out {
-        //         $trait::$method(*self, other)
+        //     fn $method(self, other: &$other) -> $out {
+        //         $trait::$method(self, other)
         //     }
         // }
 
@@ -45,7 +61,7 @@ macro_rules! binop_ref_impl {
         //     type Output = $out;
 
         //     fn $method(self, other: &$other) -> $out {
-        //         $trait::$method(*self, *other)
+        //         $trait::$method(self, other)
         //     }
         // }
     };
@@ -194,9 +210,10 @@ impl Mul<f32> for Vector3 {
 binop_ref_impl! { impl Mul<f32> for Vector3, mul -> Vector3 }
 
 impl Mul<Vector3> for f32 {
-    type Output = f32;
-    fn mul(self, other: Vector3) -> Self::Output {
-        self.cwise_mul(other)
+    type Output = Vector3;
+
+    fn mul(self, vector: Vector3) -> Vector3 {
+        vector.mul(self)
     }
 }
 
@@ -207,8 +224,8 @@ impl Neg for Vector3 {
     fn neg(self) -> Self::Output {
         Vector3 {
             x: self.x * -1f32,
-            y: self.x * -1f32,
-            z: self.x * -1f32,
+            y: self.y * -1f32,
+            z: self.z * -1f32,
         }
     }
 }
