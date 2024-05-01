@@ -40,22 +40,6 @@ macro_rules! binop_ref_impl {
                 (*self).$method(*other)
             }
         }
-
-        // impl $trait<&$other> for $self {
-        //     type Output = $out;
-
-        //     fn $method(self, other: &$other) -> $out {
-        //         $trait::$method(self, other)
-        //     }
-        // }
-
-        // impl $trait<&$other> for &$self {
-        //     type Output = $out;
-
-        //     fn $method(self, other: &$other) -> $out {
-        //         $trait::$method(self, other)
-        //     }
-        // }
     };
 }
 
@@ -190,11 +174,11 @@ binop_ref_impl! { impl Sub<Vector3> for Vector3, sub -> Vector3 }
 
 impl Mul<f32> for Vector3 {
     type Output = Vector3;
-    fn mul(self, scalar: f32) -> Self::Output {
+    fn mul(self, c: f32) -> Self::Output {
         Vector3 {
-            x: self.x * scalar,
-            y: self.y * scalar,
-            z: self.z * scalar,
+            x: self.x * c,
+            y: self.y * c,
+            z: self.z * c,
         }
     }
 }
@@ -204,8 +188,8 @@ binop_ref_impl! { impl Mul<f32> for Vector3, mul -> Vector3 }
 impl Mul<Vector3> for f32 {
     type Output = Vector3;
 
-    fn mul(self, vector: Vector3) -> Vector3 {
-        vector.mul(self)
+    fn mul(self, other: Vector3) -> Vector3 {
+        other.mul(self)
     }
 }
 
