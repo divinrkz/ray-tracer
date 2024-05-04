@@ -26,8 +26,6 @@ impl Material {
         scene: &Scene,
         bounces: usize,
     ) -> Vector3 {
-        // TODO: Implement materials.
-
         let dir = loop {
             let dir = Vector3::unit(random::normal(), random::normal(), random::normal());
 
@@ -39,5 +37,15 @@ impl Material {
         let incoming = scene.sample(
             Ray { origin: position, direction: dir }, 1.0e-3, bounces
         );
+
+        match *self {
+            Material::Emissive { color, intensity } => {
+                color * intensity
+            }
+            Material::Diffuse { color } => {
+                let brdf = (dir.dot(normal) / std::f32::consts::PI) * color;
+                2.0 * std::f32::consts::PI * brdf.cwise_mul(incoming)
+            }
+        }
     }
 }
