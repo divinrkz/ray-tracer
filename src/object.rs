@@ -70,5 +70,11 @@ pub enum Shape {
 impl Renderable for Shape {
     fn intersection(&self, ray: Ray) -> Option<(f32, Intersection)> {
         // TODO: Implement Shape intersection.
+        let a = ray.direction.squared_norm();
+        let b =  2.0 * ray.direction.dot(ray.origin);
+        let c = ray.origin.squared_norm() - 1.0;
+        let t: f32 = -b - (b.pow(2))
+    
+
     }
 }
