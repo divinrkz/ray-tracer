@@ -1,3 +1,3 @@
 # README 
 
-Ray Tracer 
+Ray Tracer in Rust
