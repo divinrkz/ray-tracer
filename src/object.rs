@@ -88,6 +88,29 @@ impl Renderable for Shape {
 
                 Some((t, Intersection { position, normal }))
             }
+            Shape::Plane => {
+                let n = Vector3::new(0.0, 0.0, 1.0);
+
+                let a = -ray.origin.dot(n);
+                let b = ray.direction.dot(n);
+                if b.abs() < 1.0e-6 {
+                    return None;
+                }
+
+                let t = a / b;
+                if t < 0.0 {
+                    return None;
+                }
+             
+                let position = ray.origin + (ray.direction * t);
+                if position.x() > 1.0 || position.y() > 1.0 {
+                    return None;
+                }
+                
+                let normal = if b < 0.0 { n } else { -n };
+
+                Some((t, Intersection { position, normal}))
+            }
         }
 
 
