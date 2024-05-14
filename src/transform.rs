@@ -14,12 +14,15 @@ pub enum Transform {
 impl Transform {
     /// Return the inverse of this transform.
     pub fn inverse(self) -> Transform {
-        // TODO: Implement Transform.
-
         match self {
-            Transform::Scale(scale) => Transform::Scale(Vector3::new(1.0 / scale.x(), 1.0 / scale.x(), 1.0 / scale.x()))
+            Transform::Scale(scale) => Transform::Scale(Vector3::new(
+                1.0 / scale.x(),
+                1.0 / scale.x(),
+                1.0 / scale.x(),
+            )),
+            Transform::Rotate(axis, angle) => Transform::Rotate(axis, -angle),
+            Transform::Translate(delta) => Transform::Translate(-delta),
         }
-
     }
 
     /// Return the input vector transformed by this transformation.

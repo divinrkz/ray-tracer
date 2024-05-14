@@ -72,16 +72,16 @@ impl Renderable for Shape {
         match *self {
             Shape::Sphere => {
                 let a = ray.direction.squared_norm();
-                let b =  2.0 * ray.direction.dot(ray.origin);
+                let b = 2.0 * ray.direction.dot(ray.origin);
                 let c = ray.origin.squared_norm() - 1.0;
-        
-                let d = b.powi(2) - 4.0*a*c;
-        
+
+                let d = b.powi(2) - 4.0 * a * c;
+
                 if d < 0.0 {
                     return None;
                 }
-        
-                let t: f32 = (-b  - d.sqrt()) / (2.0 * a);
+
+                let t: f32 = (-b - d.sqrt()) / (2.0 * a);
 
                 let position = ray.origin + (ray.direction * t);
                 let normal = position.normalized();
@@ -101,19 +101,16 @@ impl Renderable for Shape {
                 if t < 0.0 {
                     return None;
                 }
-             
+
                 let position = ray.origin + (ray.direction * t);
                 if position.x() > 1.0 || position.y() > 1.0 {
                     return None;
                 }
-                
+
                 let normal = if b < 0.0 { n } else { -n };
 
-                Some((t, Intersection { position, normal}))
+                Some((t, Intersection { position, normal }))
             }
         }
-
-
-
     }
 }

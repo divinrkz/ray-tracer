@@ -176,7 +176,9 @@ pub mod scene {
                 .map(|o| (o, o.intersection(ray)))
                 .fold(None, |c, (o, i)| match (&c, i) {
                     (None, Some((t, int))) if t > tmin => Some((t, int, o)),
-                    (Some((t_c, _, _)), Some((t, int))) if t < *t_c && t > tmin => Some((t, int, o)),
+                    (Some((t_c, _, _)), Some((t, int))) if t < *t_c && t > tmin => {
+                        Some((t, int, o))
+                    }
                     _ => c,
                 })
         }
