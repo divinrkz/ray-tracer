@@ -1,3 +1,5 @@
+use std::iter::Scan;
+
 use serde::{Deserialize, Serialize};
 
 use crate::vector::Vector3;
@@ -28,6 +30,18 @@ impl Transform {
     /// Return the input vector transformed by this transformation.
     pub fn transform(self, vector: Vector3) -> Vector3 {
         // TODO: Implement Transform.
+        match self {
+            Transform::Scale(scale) => Vector3::new(vector.x() * scale.x(), vector.y() * scale.y(), vector.z() * scale.z()),    
+            Transform::Rotate(axis, angle) => {
+                let cos_theta = angle.cos();
+                let sin_theta = angle.sin();
+                let dot = vector.dot(axis);
+                let cross = axis.cross(vector);
+
+                (vector * cos_theta) + (cross * sin_theta) + axis * dot * (1.0 - cos_theta)
+            }, 
+            Transform::Translate(delta) => vector + delta
+         }
     }
 
     /// Return a copy of an input ray transformed by self.
