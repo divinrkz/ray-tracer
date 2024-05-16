@@ -31,7 +31,11 @@ impl Transform {
     pub fn transform(self, vector: Vector3) -> Vector3 {
         // TODO: Implement Transform.
         match self {
-            Transform::Scale(scale) => Vector3::new(vector.x() * scale.x(), vector.y() * scale.y(), vector.z() * scale.z()),    
+            Transform::Scale(scale) => Vector3::new(
+                vector.x() * scale.x(),
+                vector.y() * scale.y(),
+                vector.z() * scale.z(),
+            ),
             Transform::Rotate(axis, angle) => {
                 let cos_theta = angle.cos();
                 let sin_theta = angle.sin();
@@ -39,9 +43,9 @@ impl Transform {
                 let cross = axis.cross(vector);
 
                 (vector * cos_theta) + (cross * sin_theta) + axis * dot * (1.0 - cos_theta)
-            }, 
-            Transform::Translate(delta) => vector + delta
-         }
+            }
+            Transform::Translate(delta) => vector + delta,
+        }
     }
 
     /// Return a copy of an input ray transformed by self.
@@ -50,12 +54,12 @@ impl Transform {
         match self {
             Transform::Scale(_) | Transform::Rotate(_, _) => Ray {
                 origin: self.transform(ray.origin),
-                direction: self.transform(ray.direction)
+                direction: self.transform(ray.direction),
             },
             Transform::Translate(_) => Ray {
                 origin: self.transform(ray.origin),
-                direction: ray.direction
-            }
+                direction: ray.direction,
+            },
         }
     }
 }

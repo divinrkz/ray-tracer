@@ -29,14 +29,15 @@ impl Material {
         // TODO: Implement materials.
 
         let dir = loop {
-            let dir = Vector3::unit(
-        random::normal(),
-        random::normal(),
-        random::normal()
-            )
-        }
+            let dir = Vector3::unit(random::normal(), random::normal(), random::normal());
 
-        
+            if dir.dot(normal) > 0.0 {
+                break dir;
+            }
+        };
 
+        let incoming = scene.sample(
+            Ray { origin: position, direction: dir }, 1.0e-3, bounces
+        );
     }
 }
