@@ -46,6 +46,14 @@ impl Material {
                 let brdf = (dir.dot(normal) / std::f32::consts::PI) * color;
                 2.0 * std::f32::consts::PI * brdf.cwise_mul(incoming)
             }
+            Material::Specular { color, roughness } => {
+                let halfway = (view + dir).normalized();
+                let d = (normal.dot(halfway).powi(2) / (roughness * roughness - 2.0 * roughness + std::f32::consts::PI)).clamp(0.0, 1.0);
+                let g = 1.0 / (4.0 * (view.dot(halfway)).powi(2)).clamp(0.0, 1.0);
+                let brdf = (d * g * color).cwise_mul(incoming);
+
+                2.0 * std::f32::consts::PI * brdf
+            }
         }
     }
 }
