@@ -26,15 +26,14 @@ impl Material {
         scene: &Scene,
         bounces: usize,
     ) -> Vector3 {
-        println!("Here");
+
         let dir = Vector3::unit(random::normal(), random::normal(), random::normal());
 
         if dir.dot(normal) > 0.0 {
             break dir;
         }
-    
 
-        println!("Not yet");
+    
 
 
         let incoming = scene.sample(
