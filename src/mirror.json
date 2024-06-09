@@ -1,0 +1,362 @@
+{
+  "camera": {
+    "focal_len": 35.0,
+    "width": 36.0
+  },
+  "objects": [
+    {
+      "object": "Plane",
+      "material": {
+        "Emissive": {
+          "color": {
+            "x": 0.85,
+            "y": 0.94,
+            "z": 1.00
+          },
+          "intensity": 1.0
+        }
+      },
+      "transforms": [
+        {
+          "Scale": {
+            "x": 30.0,
+            "y": 30.0,
+            "z": 1.0
+          }
+        },
+        {
+          "Rotate": [
+            {
+              "x": 1.0,
+              "y": 0.0,
+              "z": 0.0
+            },
+            1.5707964
+          ]
+        },
+        {
+          "Translate": {
+            "x": 0.0,
+            "y": 6.0,
+            "z": 0.0
+          }
+        }
+      ]
+    },
+    {
+      "object": "Plane",
+      "material": {
+        "Emissive": {
+          "color": {
+            "x": 0.85,
+            "y": 0.94,
+            "z": 1.00
+          },
+          "intensity": 1.0
+        }
+      },
+      "transforms": [
+        {
+          "Scale": {
+            "x": 30.0,
+            "y": 6.0,
+            "z": 1.0
+          }
+        },
+        {
+          "Rotate": [
+            {
+              "x": 0.0,
+              "y": 1.0,
+              "z": 0.0
+            },
+            1.5707964
+          ]
+        },
+        {
+          "Translate": {
+            "x": 30.0,
+            "y": 0.0,
+            "z": 0.0
+          }
+        }
+      ]
+    },
+    {
+      "object": "Plane",
+      "material": {
+        "Emissive": {
+          "color": {
+            "x": 0.85,
+            "y": 0.94,
+            "z": 1.00
+          },
+          "intensity": 1.0
+        }
+      },
+      "transforms": [
+        {
+          "Scale": {
+            "x": 30.0,
+            "y": 6.0,
+            "z": 1.0
+          }
+        },
+        {
+          "Rotate": [
+            {
+              "x": 0.0,
+              "y": 1.0,
+              "z": 0.0
+            },
+            1.5707964
+          ]
+        },
+        {
+          "Translate": {
+            "x": -30.0,
+            "y": 0.0,
+            "z": 0.0
+          }
+        }
+      ]
+    },
+    {
+      "object": "Plane",
+      "material": {
+        "Emissive": {
+          "color": {
+            "x": 0.85,
+            "y": 0.94,
+            "z": 1.00
+          },
+          "intensity": 1.0
+        }
+      },
+      "transforms": [
+        {
+          "Scale": {
+            "x": 30.0,
+            "y": 6.0,
+            "z": 1.0
+          }
+        },
+        {
+          "Translate": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 30.0
+          }
+        }
+      ]
+    },
+    {
+      "object": "Plane",
+      "material": {
+        "Emissive": {
+          "color": {
+            "x": 0.85,
+            "y": 0.94,
+            "z": 1.00
+          },
+          "intensity": 1.0
+        }
+      },
+      "transforms": [
+        {
+          "Scale": {
+            "x": 30.0,
+            "y": 6.0,
+            "z": 1.0
+          }
+        },
+        {
+          "Translate": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": -30.0
+          }
+        }
+      ]
+    },
+    {
+      "object": "Plane",
+      "material": {
+        "Diffuse": {
+          "color": {
+            "x": 0.9,
+            "y": 0.9,
+            "z": 0.9
+          }
+        }
+      },
+      "transforms": [
+        {
+          "Scale": {
+            "x": 20.0,
+            "y": 20.0,
+            "z": 1.0
+          }
+        },
+        {
+          "Rotate": [
+            {
+              "x": 1.0,
+              "y": 0.0,
+              "z": 0.0
+            },
+            1.5707964
+          ]
+        },
+        {
+          "Translate": {
+            "x": 0.0,
+            "y": -1.0,
+            "z": 0.0
+          }
+        }
+      ]
+    },
+    {
+      "object": "Plane",
+      "material": {
+        "Specular": {
+          "color": {
+            "x": 0.9,
+            "y": 0.9,
+            "z": 0.9
+          },
+          "roughness": 0.1
+        }
+      },
+      "transforms": [
+        {
+          "Scale": {
+            "x": 2.0,
+            "y": 1.0,
+            "z": 1.0
+          }
+        },
+        {
+          "Translate": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 8.0
+          }
+        }
+      ]
+    },
+    {
+      "object": "Sphere",
+      "material": {
+        "Diffuse": {
+          "color": {
+            "x": 0.6,
+            "y": 0.8,
+            "z": 1.0
+          }
+        }
+      },
+      "transforms": [
+        {
+          "Scale": {
+            "x": 0.5,
+            "y": 0.5,
+            "z": 0.5
+          }
+        },
+        {
+          "Translate": {
+            "x": 2.0,
+            "y": -0.5,
+            "z": 6.0
+          }
+        }
+      ]
+    },
+    {
+      "object": "Sphere",
+      "material": {
+        "Diffuse": {
+          "color": {
+            "x": 0.6,
+            "y": 1.0,
+            "z": 0.8
+          }
+        }
+      },
+      "transforms": [
+        {
+          "Scale": {
+            "x": 0.5,
+            "y": 0.5,
+            "z": 1.0
+          }
+        },
+        {
+          "Translate": {
+            "x": -1.6,
+            "y": -0.5,
+            "z": 5.0
+          }
+        }
+      ]
+    },
+    {
+      "object": "Sphere",
+      "material": {
+        "Diffuse": {
+          "color": {
+            "x": 1.0,
+            "y": 0.8,
+            "z": 0.2
+          }
+        }
+      },
+      "transforms": [
+        {
+          "Scale": {
+            "x": 0.3,
+            "y": 0.3,
+            "z": 0.3
+          }
+        },
+        {
+          "Translate": {
+            "x": 0.5,
+            "y": -0.7,
+            "z": 4.0
+          }
+        }
+      ]
+    },
+    {
+      "object": "Sphere",
+      "material": {
+        "Diffuse": {
+          "color": {
+            "x": 1.0,
+            "y": 0.2,
+            "z": 0.4
+          }
+        }
+      },
+      "transforms": [
+        {
+          "Scale": {
+            "x": 0.3,
+            "y": 0.3,
+            "z": 0.3
+          }
+        },
+        {
+          "Translate": {
+            "x": -0.6,
+            "y": -0.7,
+            "z": 6.0
+          }
+        }
+      ]
+    }
+  ]
+}

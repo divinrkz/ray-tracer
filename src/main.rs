@@ -6,7 +6,7 @@ const USAGE_STRING: &'static str =
 
 fn main() -> Result<(), &'static str> {
     // TODO: Implement main method.
-    let args = env::args().collect();
+    let args: Vec<String> = env::args().collect();
 
     if args.len() < 3 {
         return Err(USAGE_STRING)
@@ -19,7 +19,7 @@ fn main() -> Result<(), &'static str> {
     let y_res = args.get(4).and_then(|s| s.parse().ok()).unwrap_or(500);
     let samples = args.get(5).and_then(|s| s.parse().ok()).unwrap_or(500);
 
-    let scene = Scene::from_json((scene_path)).map_err(|_| USAGE_STRING)?;
+    let scene = Scene::from_json(scene_path).map_err(|_| USAGE_STRING)?;
 
     let image = scene.render(x_res, y_res, samples);
     image.save(Path::new(output_path)).map_err(|_| USAGE_STRING);

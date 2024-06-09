@@ -26,13 +26,16 @@ impl Material {
         scene: &Scene,
         bounces: usize,
     ) -> Vector3 {
-        let dir = loop {
-            let dir = Vector3::unit(random::normal(), random::normal(), random::normal());
+        println!("Here");
+        let dir = Vector3::unit(random::normal(), random::normal(), random::normal());
 
-            if dir.dot(normal) > 0.0 {
-                break dir;
-            }
-        };
+        if dir.dot(normal) > 0.0 {
+            break dir;
+        }
+    
+
+        println!("Not yet");
+
 
         let incoming = scene.sample(
             Ray { origin: position, direction: dir }, 1.0e-3, bounces
