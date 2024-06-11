@@ -27,13 +27,19 @@ impl Material {
         bounces: usize,
     ) -> Vector3 {
 
-        let dir = Vector3::unit(random::normal(), random::normal(), random::normal());
-
-        if dir.dot(normal) > 0.0 {
-            break dir;
-        }
-
-    
+        let dir = {
+            let mut dir = Vector3::unit(
+                random::normal(),
+                random::normal(),
+                random::normal(),
+            ).normalized();
+            
+            // Ensure it's in the same hemisphere as the normal
+            if dir.dot(normal) < 0.0 {
+                dir = -dir;
+            }
+            dir
+        };
 
 
         let incoming = scene.sample(
