@@ -20,13 +20,10 @@ fn main() -> Result<(), &'static str> {
     let samples = args.get(5).and_then(|s| s.parse().ok()).unwrap_or(500);
 
     let scene = Scene::from_json(scene_path).map_err(|_| USAGE_STRING)?;
-    println!("{}", scene.camera.focal_len);
 
     let image = scene.render(x_res, y_res, samples);
-    println!("here");
 
     image.save(Path::new(output_path)).map_err(|_| USAGE_STRING)?;
-    println!("here");
 
     Ok(())
 }
